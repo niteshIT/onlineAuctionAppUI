@@ -1,0 +1,27 @@
+.product-create-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: white;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.form-control {
+  margin-bottom: 1rem;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.alert-danger {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}

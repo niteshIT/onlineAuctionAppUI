@@ -1,0 +1,54 @@
+<div class="container">
+  <h2>Users Management</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Baned</th>
+        <th>Actions</th>
+        <th>History Logs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.isBaned }}</td>
+        <td>
+          <button
+            *ngIf="!user.isBaned"
+            class="btn btn-danger px-4"
+            (click)="banUser(user.id, user)"
+          >
+            Ban<i class="fa-solid fa-ban mx-2"></i>
+          </button>
+          <button
+            *ngIf="user.isBaned"
+            class="btn btn-warning px-3"
+            (click)="banUser(user.id, user)"
+          >
+            UnBan
+          </button>
+        </td>
+        <td>
+          <a [routerLink]="['/userhistory', user.id]"
+            ><i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- <div *ngIf="selectedUser" class="mt-5">
+    <h3>{{ selectedUser.name }}'s Participation History</h3>
+    <ul>
+      <li *ngFor="let auction of selectedUser.auctions">
+        Auction: {{ auction.productName }} - Status: {{ auction.status }}
+      </li>
+      <li *ngFor="let bid of selectedUser.bids">
+        Bid on: {{ bid.productName }} - Amount: {{ bid.amount }}
+      </li>
+    </ul>
+  </div> -->
+</div>

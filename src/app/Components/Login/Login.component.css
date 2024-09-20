@@ -1,0 +1,37 @@
+.outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+.panel {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+.input-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+.input-field input {
+  border: none;
+  flex-grow: 1;
+  outline: none;
+  padding: 10px;
+}
+.panel-heading {
+  text-align: center;
+}
+.panel-body {
+  padding-top: 10px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.text-muted {
+  margin-top: 20px;
+}

@@ -1,0 +1,70 @@
+<div class="container">
+  <h2>Bidding History</h2>
+  <table *ngIf="bids.length" class="table table-hover">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Bid Amount</th>
+        <th>Bid Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bid of bids">
+        <td>{{ getProductName(bid.productId) }}</td>
+        <td>{{ bid.bidAmount | currency }}</td>
+        <td>
+          {{ convertUtcToLocal(bid.bidTime.toString()) | date : "short" }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 *ngIf="!bids.length" style="color: red">No Bidding History Available</h3>
+</div>
+
+<div class="container mt-5">
+  <h2>Products Added for Sale</h2>
+  <table *ngIf="products.length" class="table table-hover">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Discripttion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>
+          {{ product.description }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 *ngIf="!products.length" style="color: red">
+    No Product Added for Auction
+  </h3>
+</div>
+
+<div class="container mt-5">
+  <h2>Product Bought by User</h2>
+  <table *ngIf="boughtProducts.length" class="table table-hover">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Category</th>
+        <th>Discripttion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of boughtProducts">
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>
+          {{ product.description }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 *ngIf="!boughtProducts.length" style="color: red">No Product Bought</h3>
+</div>

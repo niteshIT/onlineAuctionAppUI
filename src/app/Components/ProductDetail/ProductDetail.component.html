@@ -1,0 +1,61 @@
+<!-- <div class="product-detail-container">
+  <h2>{{ product.name }}</h2>
+  <p>{{ product.description }}</p>
+  <p>Starting Price: {{ product.startingPrice }}</p>
+  <p>Reserved Price: {{ product.reservedPrice }}</p>
+  <p>Category: {{ product.category }}</p>
+  <p>Current Highest Bid: {{ HighestBidAmount }}</p>
+  <p>Time Remaining: {{ timeRemaining }}</p>
+  <p>End Time: {{ product.endTime | date : "short" }}</p>
+
+  <div class="bid-section" *ngIf="!isTimeEnd">
+    <h3>Place Your Bid</h3>
+    <input type="number" [(ngModel)]="bidAmount" placeholder="Enter your bid" />
+    <button (click)="placeBid()">Place Bid</button>
+  </div>
+</div> -->
+
+<div class="product-detail-container container">
+  <div class="card">
+    <div class="card-header text-center">
+      <h2>{{ product.name }}</h2>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <p class="text-muted">{{ product.description }}</p>
+          <p><strong>Starting Price:</strong> ${{ product.startingPrice }}</p>
+          <p><strong>Reserved Price:</strong> ${{ product.reservedPrice }}</p>
+          <p><strong>Category:</strong> {{ product.category }}</p>
+          <p><strong>Current Highest Bid:</strong> ${{ HighestBidAmount }}</p>
+          <p><strong>Time Remaining:</strong> {{ timeRemaining }}</p>
+          <p *ngIf="product.boughtBy">
+            <strong>Sold To:</strong> {{ boughtByName }}
+          </p>
+          <p>
+            <strong>End Time:</strong> {{ product.endTime | date : "short" }}
+          </p>
+        </div>
+      </div>
+      <div class="bid-section mt-4" *ngIf="!isTimeEnd && userRole == 'user' && userId!=product.sellerId">
+        <h3 class="text-center">Place Your Bid</h3>
+        <div class="input-group mb-3">
+          <input
+            type="number"
+            class="form-control"
+            value="{{ product.startingPrice }}"
+            [(ngModel)]="bidAmount"
+            placeholder="Enter your bid"
+          />
+          <button
+            class="btn btn-primary"
+            *ngIf="userRole == 'user'"
+            (click)="placeBid()"
+          >
+            Place Bid
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

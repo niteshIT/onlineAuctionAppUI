@@ -1,0 +1,278 @@
+<!-- <div class="product-create-container">
+  <h2>Create New Product Listing</h2>
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input
+        type="text"
+        id="name"
+        required
+        [(ngModel)]="product.name"
+        name="name"
+        #name="ngModel"
+      />
+      <div
+        *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="alert alert-danger"
+      >
+        Product name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        required
+        [(ngModel)]="product.description"
+        name="description"
+        #description="ngModel"
+      ></textarea>
+      <div
+        *ngIf="
+          description.invalid && (description.dirty || description.touched)
+        "
+        class="alert alert-danger"
+      >
+        Description is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="startingPrice">Starting Price</label>
+      <input
+        type="number"
+        id="startingPrice"
+        required
+        [(ngModel)]="product.startingPrice"
+        name="startingPrice"
+        #startingPrice="ngModel"
+      />
+      <div
+        *ngIf="
+          startingPrice.invalid &&
+          (startingPrice.dirty || startingPrice.touched)
+        "
+        class="alert alert-danger"
+      >
+        Starting price is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="auctionDuration">Auction Duration (hours)</label>
+      <input
+        type="number"
+        id="auctionDuration"
+        required
+        [(ngModel)]="product.auctionDuration"
+        name="auctionDuration"
+        #auctionDuration="ngModel"
+      />
+      <div
+        *ngIf="
+          auctionDuration.invalid &&
+          (auctionDuration.dirty || auctionDuration.touched)
+        "
+        class="alert alert-danger"
+      >
+        Auction duration is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <input
+        type="text"
+        id="category"
+        required
+        [(ngModel)]="product.category"
+        name="category"
+        #category="ngModel"
+      />
+      <div
+        *ngIf="category.invalid && (category.dirty || category.touched)"
+        class="alert alert-danger"
+      >
+        Category is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="reservedPrice">Reserved Price</label>
+      <input
+        type="number"
+        id="reservedPrice"
+        required
+        [(ngModel)]="product.reservedPrice"
+        name="reservedPrice"
+        #reservedPrice="ngModel"
+      />
+      <div
+        *ngIf="
+          reservedPrice.invalid &&
+          (reservedPrice.dirty || reservedPrice.touched)
+        "
+        class="alert alert-danger"
+      >
+        Reserved price is required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="productForm.invalid">
+      Create Product
+    </button>
+  </form>
+</div> -->
+
+<div class="container mt-5 product-create-container">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h2 class="text-center">Create New Product Listing</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <div class="form-group">
+          <label for="name">Product Name</label>
+          <input
+            type="text"
+            id="name"
+            required
+            [(ngModel)]="product.name"
+            name="name"
+            #name="ngModel"
+            class="form-control"
+            placeholder="Enter product name"
+          />
+          <div
+            *ngIf="name.invalid && (name.dirty || name.touched)"
+            class="alert alert-danger mt-2"
+          >
+            Product name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            required
+            [(ngModel)]="product.description"
+            name="description"
+            #description="ngModel"
+            class="form-control"
+            placeholder="Enter product description"
+          ></textarea>
+          <div
+            *ngIf="
+              description.invalid && (description.dirty || description.touched)
+            "
+            class="alert alert-danger mt-2"
+          >
+            Description is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="startingPrice">Starting Price</label>
+          <input
+            type="number"
+            id="startingPrice"
+            required
+            [(ngModel)]="product.startingPrice"
+            name="startingPrice"
+            #startingPrice="ngModel"
+            class="form-control"
+            placeholder="Enter starting price"
+          />
+          <div
+            *ngIf="
+              startingPrice.invalid &&
+              (startingPrice.dirty || startingPrice.touched)
+            "
+            class="alert alert-danger mt-2"
+          >
+            Starting price is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="auctionDuration">Auction Duration (hours)</label>
+          <input
+            type="number"
+            id="auctionDuration"
+            required
+            [(ngModel)]="product.auctionDuration"
+            name="auctionDuration"
+            #auctionDuration="ngModel"
+            class="form-control"
+            placeholder="Enter auction duration in hours"
+          />
+          <div
+            *ngIf="
+              auctionDuration.invalid &&
+              (auctionDuration.dirty || auctionDuration.touched)
+            "
+            class="alert alert-danger mt-2"
+          >
+            Auction duration is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select
+            id="category"
+            required
+            [(ngModel)]="product.category"
+            name="category"
+            #category="ngModel"
+            class="form-control"
+          >
+            <option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </option>
+          </select>
+          <div
+            *ngIf="category.invalid && (category.dirty || category.touched)"
+            class="alert alert-danger mt-2"
+          >
+            Category is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="reservedPrice">Reserved Price</label>
+          <input
+            type="number"
+            id="reservedPrice"
+            required
+            [(ngModel)]="product.reservedPrice"
+            name="reservedPrice"
+            #reservedPrice="ngModel"
+            class="form-control"
+            placeholder="Enter reserved price"
+          />
+          <div
+            *ngIf="
+              reservedPrice.invalid &&
+              (reservedPrice.dirty || reservedPrice.touched)
+            "
+            class="alert alert-danger mt-2"
+          >
+            Reserved price is required and must be greater than or equal to the
+            starting price.
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+          [disabled]="productForm.invalid"
+        >
+          Create Product
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

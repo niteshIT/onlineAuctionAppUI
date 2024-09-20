@@ -1,0 +1,72 @@
+<div class="product-list-container container">
+  <div class="search-filter mb-4">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search products"
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
+      />
+      <select
+        class="form-select"
+        [(ngModel)]="selectedCategory"
+        (change)="onSearch()"
+      >
+        <option value="">All Categories</option>
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+      <select
+        class="form-select"
+        [(ngModel)]="sortOption"
+        (change)="onSearch()"
+      >
+        <option value="price">Sort by Price</option>
+        <option value="time">Sort by Time Remaining</option>
+        <option value="you">Product Added by You</option>
+        <option value="all">All Products</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="product-list row">
+    <div
+      *ngFor="let product of filteredProducts"
+      class="product-item col-md-4 mb-4"
+    >
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p>
+            <strong>Starting Price:</strong>
+            {{ product.startingPrice | currency }}
+          </p>
+          <p>
+            <strong>Time Remaining:</strong>
+            {{ getTimeRemaining(product.endTime) }}
+          </p>
+          <p class="btns">
+            <a [routerLink]="['/products', product.id]" class="btn btn-primary"
+              >View Details</a
+            >
+            <a
+              class="btn btn-danger mx-4"
+              *ngIf="userRole == 'admin'"
+              (click)="deleteProduct(product.id)"
+              >Delete</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-list row">
+    <h1 *ngIf="!filteredProducts.length" style="color: red">
+      No Products Available
+    </h1>
+  </div>
+</div>

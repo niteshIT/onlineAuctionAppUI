@@ -1,0 +1,23 @@
+
+.nav-item a{
+
+  position: relative;
+  &::after{
+    position: absolute;
+    margin-top: 10px;
+    content:"";
+    top: 20px;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px solid #007bff;
+    transition: all .3s linear;
+  }
+}
+li a:hover::after{
+  width: 100%;
+}
+.nav-link{
+  cursor: pointer;
+}
+
+
